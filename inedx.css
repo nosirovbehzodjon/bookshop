@@ -157,7 +157,12 @@ a {
 #footer .total-price {
     display: none;
 }
-
+#sidebar #hidden-btn {
+    display: none;
+}
+#header #visible-btn {
+    display: none;
+}
 .card {
     height: 350px;
     width: 270px;
@@ -252,6 +257,9 @@ a {
         top: 0;
     }
     #sidebar #hidden-btn {
+        display: inline-block;
+    }
+    #header #visible-btn {
         display: inline-block;
     }
 }

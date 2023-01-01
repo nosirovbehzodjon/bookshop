@@ -105,60 +105,39 @@ function getData(array) {
     footerTotalPrice.textContent = `Totatal price: ${totalSum} so’m`;
 }
 
+function filterStatusData(array, status) {
+    filterTitle.textContent = status;
+    footerFilterTitle.textContent = status;
+    let empty = [];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].status == status.toLowerCase()) {
+            empty.push(array[i]);
+        }
+    }
+    content.innerHTML = "";
+    getData(empty);
+}
+
 //initial card
 getData(data);
 
 allbooksBtn.addEventListener("click", function () {
     filterTitle.textContent = "All books";
     footerFilterTitle.textContent = "All books";
-    sidebar.style.transform = "translateX(-100%)";
     content.innerHTML = "";
     getData(data);
 });
 
 expensiveBtn.addEventListener("click", function () {
-    filterTitle.textContent = "Expensive";
-    footerFilterTitle.textContent = "Expensive";
-    sidebar.style.transform = "translateX(-100%)";
-    let expensiveArr = [];
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].status == "expensive") {
-            expensiveArr.push(data[i]);
-        }
-    }
-    content.innerHTML = "";
-    getData(expensiveArr);
-    console.log(expensiveArr);
+    filterStatusData(data, "Expensive");
 });
 
 cheepBtn.addEventListener("click", function () {
-    filterTitle.textContent = "Cheep";
-    footerFilterTitle.textContent = "Cheep";
-    sidebar.style.transform = "translateX(-100%)";
-    let cheepArr = [];
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].status == "cheep") {
-            cheepArr.push(data[i]);
-        }
-    }
-    content.innerHTML = "";
-    getData(cheepArr);
-    console.log(cheepArr);
+    filterStatusData(data, "Cheep");
 });
 
 middleBtn.addEventListener("click", function () {
-    filterTitle.textContent = "Middle";
-    footerFilterTitle.textContent = "Middle";
-    sidebar.style.transform = "translateX(-100%)";
-    let middleArr = [];
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].status == "middle") {
-            middleArr.push(data[i]);
-        }
-    }
-    content.innerHTML = "";
-    getData(middleArr);
-    console.log(middleArr);
+    filterStatusData(data, "Middle");
 });
 searchMaxBtn.addEventListener("click", function () {
     if (searchPriceInp.value == "" || isNaN(searchPriceInp.value)) {
@@ -167,7 +146,6 @@ searchMaxBtn.addEventListener("click", function () {
         let maxArr = [];
         filterTitle.textContent = `Higher than ${searchPriceInp.value}`;
         footerFilterTitle.textContent = `Higher than ${searchPriceInp.value}`;
-        sidebar.style.transform = "translateX(-100%)";
         for (let i = 0; i < data.length; i++) {
             if (data[i].price >= searchPriceInp.value) {
                 maxArr.push(data[i]);
@@ -184,7 +162,6 @@ searchMinBtn.addEventListener("click", function () {
         let minArr = [];
         filterTitle.textContent = `Lower than ${searchPriceInp.value}`;
         footerFilterTitle.textContent = `Lower than ${searchPriceInp.value}`;
-        sidebar.style.transform = "translateX(-100%)";
         for (let i = 0; i < data.length; i++) {
             if (data[i].price <= searchPriceInp.value) {
                 minArr.push(data[i]);
@@ -194,8 +171,6 @@ searchMinBtn.addEventListener("click", function () {
         getData(minArr);
     }
 });
-// let str = "behzod";
-// console.log(str.includes("bet"));
 searchInp.addEventListener("input", function (e) {
     let searchResult = e.target.value;
     let searchD = data.filter((item) =>
@@ -206,6 +181,11 @@ searchInp.addEventListener("input", function (e) {
 });
 
 //---------------
+window.addEventListener("resize", function (e) {
+    if (e.target.innerWidth > 750) {
+        sidebar.style.transform = "translateX(0%)";
+    }
+});
 visibleBtn.addEventListener("click", function () {
     sidebar.style.transform = "translateX(0%)";
 });

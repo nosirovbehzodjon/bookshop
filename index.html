@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./inedx.css" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="control">
+            <header id="header">
+                <img src="./images/toggle.png" alt="toogle" id="visible-btn" />
+                <span class="filter-title">All books</span>
+                <div class="input-control">
+                    <input
+                        type="text"
+                        id="search"
+                        placeholder="write title"
+                        class="inp"
+                    />
+                    <button id="searchBtn" class="btn">search</button>
+                </div>
+                <span class="total-price">Totatal price: 200000 so’m</span>
+            </header>
+            <aside id="sidebar">
+                <img src="./images/BOOKshop.svg" alt="" />
+                <img src="./images/times.png" alt="" id="hidden-btn" />
+                <h2>Filter</h2>
+                <ul class="list">
+                    <li class="item" id="allbooks">All books</li>
+                    <li class="item" id="expensive">Expensive</li>
+                    <li class="item" id="cheep">Cheep</li>
+                    <li class="item" id="middle">Middle</li>
+                </ul>
+                <input
+                    type="text"
+                    id="searchPrice"
+                    placeholder="write price"
+                    class="inp"
+                />
+                <div class="side-btn-control">
+                    <button id="searchMaxBtn" class="btn">max</button>
+                    <button id="searchMinBtn" class="btn">min</button>
+                </div>
+            </aside>
+            <section id="content"></section>
+            <footer id="footer">
+                <span class="filter-title">All books</span>
+                <span class="total-price">Totatal price: 200000 so’m</span>
+            </footer>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
